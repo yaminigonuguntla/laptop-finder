@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LaptopFinder</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="site-header">
+        <div class="header-inner">
+            <h1 class="logo">LaptopFinder</h1>
+            <div class="search-wrap">
+                <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                    <circle cx="11" cy="11" r="8" />
+                    <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                </svg>
+                <input type="text" id="search-input" placeholder="Search laptops..." autocomplete="off">
+                <button class="search-clear" id="search-clear" type="button" hidden>×</button>
+            </div>
+        </div>
+    </header>
+
+    <div class="layout">
+
+        <button class="mobile-filter-btn" id="filter-toggle">☰ Filters</button>
+
+        <aside class="filter-panel" id="filter-panel">
+            <div class="filter-panel-header">
+                <span class="filter-title">Filters</span>
+                <button class="clear-all-btn" id="clear-all">Clear all</button>
+            </div>
+
+            <div class="filter-panel-scroll">
+                <div id="filter-categories"></div>
+            </div>
+
+            <div class="custom-keyword-section">
+                <h3 class="category-title">Keywords</h3>
+                <p class="keyword-hint">Anything not covered above.</p>
+                <div class="keyword-input-row">
+                    <button class="keyword-mode-btn" id="keyword-mode" data-mode="include" title="Include or exclude">✓</button>
+                    <input type="text" id="keyword-input" placeholder="Touchscreen" maxlength="50">
+                    <button class="keyword-add-btn" id="keyword-add">Add</button>
+                </div>
+                <div class="chips-wrap" id="chips-wrap"></div>
+            </div>
+
+            <div class="filter-actions">
+                <button class="apply-btn" id="apply-filters">Apply filters</button>
+            </div>
+        </aside>
+
+        <div class="filter-overlay" id="filter-overlay"></div>
+
+        <main class="results-area">
+            <div class="results-header">
+                <span id="results-count"></span>
+                <div class="sort-wrap">
+                    <label for="sort-select">Sort</label>
+                    <select id="sort-select">
+                        <option value="default">Relevance</option>
+                        <option value="price-asc">Price: low to high</option>
+                        <option value="price-desc">Price: high to low</option>
+                        <option value="name-asc">Name: A–Z</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="active-filters-bar" id="active-filters-bar" hidden>
+                <span class="active-filters-label">Applied</span>
+                <div class="active-filters-list" id="active-filters-list"></div>
+                <button type="button" class="active-filters-clear-btn" id="active-filters-clear">Clear all</button>
+            </div>
+
+            <div class="results-grid" id="results-grid"></div>
+
+            <div class="no-results" id="no-results">
+                <div class="no-results-inner">
+                    <p class="no-results-title">Nothing matched</p>
+                    <p class="no-results-sub">Try clearing a filter or two.</p>
+                    <button class="no-results-btn" id="no-results-clear">Clear all filters</button>
+                </div>
+            </div>
+
+            <div class="load-more-wrap" id="load-more-wrap">
+                <button class="load-more-btn" id="load-more">Load more</button>
+            </div>
+        </main>
+
+    </div>
+
+    <div class="price-modal-overlay" id="price-modal">
+        <div class="price-modal-box">
+            <button class="price-modal-close" id="modal-close">×</button>
+            <div class="price-modal-header">
+                <div class="price-modal-name" id="modal-laptop-name"></div>
+                <div class="price-modal-sub" id="modal-laptop-sub"></div>
+            </div>
+            <p class="price-modal-hint">Prices aren't real — links just search the store for this laptop.</p>
+            <div class="price-modal-cards" id="modal-retailer-cards"></div>
+        </div>
+    </div>
+
+    <div class="compare-tray" id="compare-tray" hidden>
+        <div class="compare-tray-inner">
+            <div class="compare-tray-meta">
+                <span class="compare-tray-title">Compare</span>
+                <span class="compare-tray-count" id="compare-tray-count">0 of 4</span>
+            </div>
+            <div class="compare-tray-items" id="compare-tray-items"></div>
+            <div class="compare-tray-actions">
+                <button type="button" class="compare-tray-clear" id="compare-tray-clear">Clear</button>
+                <button type="button" class="compare-tray-go" id="compare-tray-go" disabled>Compare</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="compare-modal-overlay" id="compare-modal">
+        <div class="compare-modal-box">
+            <button type="button" class="compare-modal-close" id="compare-modal-close">×</button>
+            <h2 class="compare-modal-title" id="compare-modal-title">Compare</h2>
+            <div class="compare-table-wrap" id="compare-table-wrap"></div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
