@@ -1107,6 +1107,16 @@ document.addEventListener('DOMContentLoaded', async () => {
       closeCompareModal();
     } else if (priceModal.classList.contains('open')) {
       closePriceModal();
+    } else if (el('filter-panel').classList.contains('open')) {
+      closeFilterPanel();
+    }
+  });
+
+  el('filter-close').addEventListener('click', closeFilterPanel);
+
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > MOBILE_MAX && el('filter-panel').classList.contains('open')) {
+      closeFilterPanel();
     }
   });
 });

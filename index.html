@@ -29,7 +29,10 @@
         <aside class="filter-panel" id="filter-panel">
             <div class="filter-panel-header">
                 <span class="filter-title">Filters</span>
-                <button class="clear-all-btn" id="clear-all">Clear all</button>
+                <div class="filter-panel-header-actions">
+                    <button class="clear-all-btn" id="clear-all">Clear all</button>
+                    <button type="button" class="filter-panel-close" id="filter-close" aria-label="Close filters">×</button>
+                </div>
             </div>
 
             <div class="filter-panel-scroll">
@@ -38,7 +41,7 @@
 
             <div class="custom-keyword-section">
                 <h3 class="category-title">Keywords</h3>
-                <p class="keyword-hint">Anything not covered above.</p>
+                <p class="keyword-hint">Type any term to include or exclude it</p>
                 <div class="keyword-input-row">
                     <button class="keyword-mode-btn" id="keyword-mode" data-mode="include" title="Include or exclude">✓</button>
                     <input type="text" id="keyword-input" placeholder="Touchscreen" maxlength="50">
